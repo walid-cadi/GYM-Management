@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero_section {
+    background-image: url("../../public/images/h1_hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
