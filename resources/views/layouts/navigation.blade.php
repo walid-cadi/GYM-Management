@@ -99,7 +99,7 @@
     </div>
 </nav> --}}
 
-<nav class="flex justify-between bg-[#111317] text-white shadow-md">
+<nav class="flex fixed top-0 w-full justify-between bg-[#111317] text-white shadow-md">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-2 w-full">
       <div class="relative flex items-center justify-between h-16">
         <!-- Logo and Navigation Links -->

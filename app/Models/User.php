@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'width',
+        'height',
     ];
 
     /**
@@ -44,5 +46,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class,"user_has_roles");
+    }
+    public function hasRole($roles){
+        return $this->roles()->wherein("name",$roles)->exists();
     }
 }
