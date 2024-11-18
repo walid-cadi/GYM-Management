@@ -13,14 +13,14 @@
                     @else
                         <a
                             href="{{ route('login') }}"
-                            class="bg-[#d4fdc2] rounded-full text-[#006400] text-sm md:text-lg font-semibold py-2 px-5 md:px-7"
+                            class="bg-[#75de5d] rounded-full text-white text-sm md:text-lg font-semibold py-2 px-5 md:px-7 hover:bg-[#75de5dc6] duration-300"
                         >
                             Log in
                         </a>
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
-                                class="bg-[#006400] rounded-full text-white text-sm md:text-lg font-semibold py-2 px-5 md:px-7 hover:bg-[#75de5d] duration-300"
+                                class="bg-[#006400] rounded-full text-white text-sm md:text-lg font-semibold py-2 px-5 md:px-7 hover:bg-[#006400ce] duration-300"
                             >
                                 Register
                             </a>
@@ -35,7 +35,7 @@
         </h1>
         <a
             href="#"
-            class="text-white bg-[#006400] text-sm md:text-lg py-3 px-5 md:px-6 rounded-lg hover:bg-[#75de5dc5] duration-300"
+            class="text-white bg-[#006400] text-sm md:text-lg py-3 px-5 md:px-6 rounded-lg hover:bg-[#006400cf] duration-300"
         >
             BECOME A MEMBER
         </a>
