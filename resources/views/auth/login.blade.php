@@ -50,7 +50,7 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="w-full min-h-screen bg-[#111317] flex items-center justify-center px-5 md:px-0">
+    <div class="w-full min-h-screen bg-[#06080a] flex items-center justify-center px-5 md:px-0">
         <div class="bg-white w-full md:w-[60vw] h-auto md:h-[70vh] flex flex-col md:flex-row rounded-xl overflow-hidden">
             <div class="w-full md:w-[55%] h-auto md:h-full p-7 flex flex-col justify-center">
                 <h1 class="text-[#111317] text-center text-2xl md:text-3xl font-bold">
