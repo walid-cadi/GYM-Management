@@ -34,7 +34,7 @@
             Transform your Fitness Journey
         </h1>
         <a
-            href="#"
+            href="{{ route('register') }}"
             class="text-white bg-[#006400] text-sm md:text-lg py-3 px-5 md:px-6 rounded-lg hover:bg-[#006400cf] duration-300"
         >
             BECOME A MEMBER
