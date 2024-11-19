@@ -7,8 +7,8 @@
                 <img class="w-32 md:w-48" src="{{ asset('images/FitMaster_Logo.png') }}" alt="">
                 <div class="flex items-center gap-x-3 md:gap-x-5">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-white text-sm md:text-lg font-medium">
-                            Dashboard
+                        <a href="{{ url('/gym') }}" class="text-white font-semibold bg-[#006400] text-sm md:text-lg py-2 px-5 md:px-6 rounded-lg hover:bg-[#006400cf] duration-300">
+                            GYM
                         </a>
                     @else
                         <a

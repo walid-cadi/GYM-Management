@@ -4,17 +4,7 @@
             @include('layouts.sidebar')
         </div>
         <div class=" ms-[250px] w-full p-7 ">
-            <div class="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg mt-10">
-                <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-8">Request to Become a Trainer</h1>
-                <form action="{{ route("trainer-requests.store") }}" method="POST">
-                    @csrf
-                    <div class="mt-6 text-center">
-                        <button type="submit" class="w-full py-3 px-6 bg-blue-600 text-white rounded-md shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                            Submit Request
-                        </button>
-                    </div>
-                </form>
-            </div>
+            
             <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
                 <thead class="bg-gray-50">
                     <tr>

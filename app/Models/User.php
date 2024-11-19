@@ -53,4 +53,7 @@ class User extends Authenticatable
     public function hasRole($roles){
         return $this->roles()->wherein("name",$roles)->exists();
     }
+    public function Sesions(){
+        $this->hasMany(Sesion::class ,"user_id");
+    }
 }

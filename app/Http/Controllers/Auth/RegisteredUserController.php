@@ -54,6 +54,6 @@ class RegisteredUserController extends Controller
             "width" => $request->width,
             "height" => $request->height,
         ]);
-        return redirect(route("dashboard"));
+        return redirect(route("gym"));
     }
 }

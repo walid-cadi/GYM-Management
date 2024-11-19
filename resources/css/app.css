@@ -7,3 +7,37 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* Customize colors for specific buttons */
+.fc-listDay-button {
+    background-color: #006400; /* Dark Green */
+    color: white; /* Text color */
+}
+
+.fc-listWeek-button {
+    background-color: #32CD32; /* Lime Green */
+    color: white;
+}
+
+.fc-listMonth-button {
+    background-color: #7FFF00; /* Chartreuse */
+    color: black; /* Dark text for better contrast */
+}
+
+.fc-timeGridWeek-button {
+    background-color: #32CD32; /* Lime Green */
+    color: white;
+}
+
+.fc-timeGridDay-button {
+    background-color: #7FFF00; /* Chartreuse */
+    color: black; /* Dark text for better contrast */
+}
+.fc-dayGridMonth-button {
+    background-color: #006400; /* Dark Green */
+    color: white;
+}
+/* Optional: Add hover effects */
+.fc-button:hover {
+    filter: brightness(1.2); /* Slightly brighten on hover */
+}

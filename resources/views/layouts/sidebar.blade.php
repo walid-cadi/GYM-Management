@@ -8,18 +8,6 @@
             </a>
           </li>
           <li>
-            <a href=""
-              class="text-white text-xl hover:text-white text-[15px] flex items-center hover:bg-[#006400] rounded px-4 py-3 transition-all">
-              <span class="font-semibold">Session</span>
-            </a>
-          </li>
-          <li>
-            <a href=""
-              class="text-white text-xl hover:text-white text-[15px] flex items-center hover:bg-[#006400] rounded px-4 py-3 transition-all">
-              <span class="font-semibold">Reservation</span>
-            </a>
-          </li>
-          <li>
             <a href="/trainer-request"
               class="text-white text-xl hover:text-white text-[15px] flex items-center hover:bg-[#006400] rounded px-4 py-3 transition-all">
               <span class="font-semibold">Trainer Request</span>
