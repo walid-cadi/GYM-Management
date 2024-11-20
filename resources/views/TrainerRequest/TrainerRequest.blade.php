@@ -4,7 +4,7 @@
             @include('layouts.sidebar')
         </div>
         <div class=" ms-[250px] w-full p-7 ">
-            
+
             <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
                 <thead class="bg-gray-50">
                     <tr>
@@ -13,6 +13,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Request Date
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Pay
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
@@ -34,6 +37,14 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $request->created_at }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                @if ( $request->pay  == 0)
+                                    <h1 class="bg-red-600 rounded text-white p-1 w-[80px]">not payed</h1>
+                                @elseif ($request->pay  == 1)
+                                    <h1 class="bg-green-600 rounded text-white p-1 w-[80px]">payed</h1>
+                                @endif
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $request->status }}

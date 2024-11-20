@@ -6,6 +6,9 @@ use App\Models\Role;
 use App\Models\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Checkout\Session;
+use Stripe\Price;
+use Stripe\Stripe;
 
 class TrainerRequestController extends Controller
 {
@@ -51,7 +54,35 @@ class TrainerRequestController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return back();
+        return redirect(route("trainer.subscrip"));
+    }
+    public function subscrip(){
+        Stripe::setApiKey(config('stripe.sk'));
+        $prices = Price::all();
+
+          $checkout_session = Session::create([
+            'line_items' => [[
+              'price' => $prices->data[0]->id,
+              'quantity' => 1,
+            ]],
+            'mode' => 'subscription',
+            'success_url' => route('trainer.seccess'),
+            'cancel_url' => route('session.index'),
+          ]);
+
+          return redirect()->away($checkout_session->url);
+    }
+
+    public function success(){
+        $user = Auth::user();
+        $trainerRequest = TrainerRequest::where('user_id', $user->id)->first();
+
+        if ($trainerRequest) {
+            $trainerRequest->update([
+                'pay' => true
+            ]);
+        }
+        return redirect(route("session.index"));
     }
 
     /**

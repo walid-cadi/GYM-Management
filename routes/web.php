@@ -58,11 +58,14 @@ Route::middleware('auth')->group(function () {
     Route::post('trainer-requests/{trainerRequest}/reject', [TrainerRequestController::class, 'reject'])->name('trainer-requests.reject');
 
 
-    Route::get("/sessions",[SesionController::class,"index"]);
+    Route::get("/sessions",[SesionController::class,"index"])->name("session.index");
     Route::get("/sessions/create",[SesionController::class,"create"])->name("session.create");
     Route::post("/sessions/store",[SesionController::class,"store"])->name("session.store");
     Route::put("/calendar/update/{sesion}" , [SesionController::class , "update"])->name("session.update");
     Route::delete("/calendar/delete/{sesion}" , [SesionController::class , "destroy"])->name("session.delete");
+
+    Route::get("trainer/subscrip",[TrainerRequestController::class,"subscrip"])->name("trainer.subscrip");
+    Route::get("trainer/seccess",[TrainerRequestController::class,"success"])->name("trainer.seccess");
 });
 
 require __DIR__.'/auth.php';

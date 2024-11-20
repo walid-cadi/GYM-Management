@@ -14,11 +14,11 @@
           </div> --}}
         </div>
 
-        <div class="flex gap-x-3">
-            <a href="">Home</a>
+        <div class="flex gap-x-8 text-lg">
+            <a href="/gym">Home</a>
             <a href="/sessions">Sessions</a>
             <a href="">Reservation</a>
-          </div>
+        </div>
 
         <!-- Profile Dropdown -->
         <div class="relative" x-data="{ openProfileMenu: false }">

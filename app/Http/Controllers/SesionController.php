@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sesion;
+use App\Models\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,8 @@ class SesionController extends Controller
     {
         //
         $sessions = Sesion::all();
-        return view("session.session",compact("sessions"));
+        $request_isPay = TrainerRequest::where("user_id",auth()->user()->id)->first();
+        return view("session.session",compact("sessions","request_isPay"));
     }
 
     /**
