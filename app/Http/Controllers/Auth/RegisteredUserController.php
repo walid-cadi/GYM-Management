@@ -50,10 +50,34 @@ class RegisteredUserController extends Controller
         //return redirect(route('info',compact("user"), absolute: false));
     }
     public function info(User $user,Request $request){
-        
+
+        $weight = $request->weight;
+        $height = $request->height;
+        $age = $request->age;
+        $activity_factor = $request->activity;
+
+            // * For men:
+            //^ BMR = 10 × weight (kg) + 6.25 × height (cm) - 5 × age (years) + 5
+
+            // For women:
+            //^ BMR = 10 × weight (kg) + 6.25 × height (cm) - 5 × age (years) - 161
+
+            //! TDEE = BMR × Activity Factor
+
+        if($request->gender == 'female'){
+            $bmr = 10 * $weight + 6.25 * $height - 5 * $age + 5;
+        }else{
+            $bmr = 10 * $weight + 6.25 * $height - 5 * $age - 161;
+        }
+
+        $calories = $bmr * $activity_factor;
+
         $user->update([
-            "width" => $request->width,
+            "age" => $request->age ,
+            "weight" => $request->weight ,
             "height" => $request->height,
+            "gender" => $request->gender,
+            "calories" => $calories
         ]);
         return redirect(route("gym"));
     }

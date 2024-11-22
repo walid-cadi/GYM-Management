@@ -63,8 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(Sesion::class ,"user_id");
     }
 
-    public function Sessions(){
-        return $this->belongsToMany(Sesion::class,"user_sesions","user_id","sesion_id");
-    }
+    public function sessions()
+{
+    return $this->belongsToMany(Sesion::class, 'user_sesions', 'user_id', 'sesion_id')
+                ->withTimestamps();
+}
+
 
 }

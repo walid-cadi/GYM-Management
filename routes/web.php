@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get("trainer/subscrip",[TrainerRequestController::class,"subscrip"])->name("trainer.subscrip");
     Route::get("trainer/seccess",[TrainerRequestController::class,"success"])->name("trainer.seccess");
+    Route::post('/session/{id}/join', [SesionController::class, 'joinSession'])->name('sessions.join');
+    Route::delete("/session/{sesion}",[SesionController::class,"destroy"])->name("session.delete");
 });
 
 require __DIR__.'/auth.php';

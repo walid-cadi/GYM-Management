@@ -22,7 +22,10 @@ class Sesion extends Model
         return $this->belongsTo(User::class,"user_id");
     }
 
-    public function users(){
-        return $this->belongsToMany(User::class,"user_sesions");
-    }
+    public function users()
+{
+    return $this->belongsToMany(User::class, 'user_sesions', 'sesion_id', 'user_id')
+                ->withTimestamps();
+}
+
 }

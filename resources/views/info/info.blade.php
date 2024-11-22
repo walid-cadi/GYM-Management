@@ -34,7 +34,7 @@
           </label>
           <input
             class="rounded-lg focus:ring-2 focus:ring-[#ff6d2f] focus:outline-none border border-gray-300 p-3 text-gray-700"
-            type="number"
+            type="text"
             required
             placeholder="Enter your weight"
             name="weight"
@@ -47,7 +47,7 @@
           </label>
           <input
             class="rounded-lg focus:ring-2 focus:ring-[#ff6d2f] focus:outline-none border border-gray-300 p-3 text-gray-700"
-            type="number"
+            type="text"
             required
             placeholder="Enter your height"
             name="height"

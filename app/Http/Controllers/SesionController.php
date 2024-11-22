@@ -6,6 +6,7 @@ use App\Models\Sesion;
 use App\Models\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SesionController extends Controller
 {
@@ -68,6 +69,59 @@ class SesionController extends Controller
 
         return back();
     }
+    //  public function joinSession($sessionId){
+    //         // Check if the user is authenticated
+    //         //dd($sessionId);
+    //         if (!Auth::check()) {
+    //             return redirect()->route('login')->with('error', 'Please log in to join a session.');
+    //         }
+
+    //         $session = Sesion::findOrFail($sessionId);
+
+    //         // Check if spots are available
+    //         if ($session->spots <= 0) {
+    //             return back()->with('error', 'Ce cours est plein.');
+    //         }
+
+    //         // Check if the user is already enrolled in the session
+    //         if (DB::table('user_sesions')->where('sesion_id', $sessionId)->where('user_id', Auth::id())->exists()) {
+    //             return back()->with('error', 'Vous êtes déjà inscrit à ce cours.');
+    //         }
+
+    //         // Attach the user to the session
+    //         if ($session && auth()->user()) {
+    //             $session->users()->attach(auth()->user());
+    //         }
+    //         // Decrement the available spots
+    //         $session->decrement('spots');
+
+    //         // Redirect with success message
+    //         return back()->with('success', 'Vous êtes inscrit avec succès.');
+    //     }
+    public function joinSession($sessionId)
+{
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'Veuillez vous connecter pour rejoindre une session.');
+    }
+
+    $user = Auth::user();
+    $session = Sesion::findOrFail($sessionId);
+
+    if ($session->spots <= 0) {
+        return back()->with('error', 'Ce cours est plein.');
+    }
+
+    if ($user->sessions()->where('sesion_id', $sessionId)->exists()) {
+        return back()->with('error', 'Vous êtes déjà inscrit à ce cours.');
+    }
+
+    $user->sessions()->attach($sessionId);
+
+    $session->decrement('spots');
+
+    return back()->with('success', 'Vous êtes inscrit avec succès.');
+}
+
 
     /**
      * Display the specified resource.

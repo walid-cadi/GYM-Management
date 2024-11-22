@@ -145,7 +145,7 @@
             </div>
 
             @foreach ($sessions as $session)
-                <button class="hidden bg-[#006400] text-white rounded-md px-4 py-2 hover:bg-[#006400c8] transition" id="session{{ $session->id }}" onclick="openModal('sessionInfo{{ $session->id }}')">
+                <button class="hidden bg-[#ff6d2f] text-white rounded-md px-4 py-2 hover:bg-[#ff6d2fc8] transition" id="session{{ $session->id }}" onclick="openModal('sessionInfo{{ $session->id }}')">
                     Click to Open modal
                 </button>
 
@@ -180,10 +180,23 @@
                                     <p class="text-gray-600">
                                         <span class="font-medium text-gray-700">Spots:</span> {{$session->spots}}
                                     </p>
-                                    <form action="">
-                                        @csrf
-                                        <button>Join Now</button>
-                                    </form>
+                                    @if(Auth::user()->sessions->contains($session->id))
+                                        <p>Vous êtes déjà inscrit à cette session.</p>
+                                    @else
+                                        <form method="post" action="{{ route('sessions.join', $session->id) }}">
+                                            @csrf
+                                            <button type="submit" class="">Rejoindre cette session</button>
+                                        </form>
+                                    @endif
+                                </div>
+                                <div>
+                                    @if (auth()->user()->id == $session->user_id)
+                                        <form method="post" action="{{ route("session.delete",$session->id) }}">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button>Delete This Session</button>
+                                        </form>
+                                    @endif
                                 </div>
 
                             </div>
