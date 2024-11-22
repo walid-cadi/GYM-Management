@@ -21,8 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'width',
+        'age',
+        'weight',
         'height',
+        'gender',
+        'calories',
     ];
 
     /**
@@ -57,7 +60,11 @@ class User extends Authenticatable
     //     $this->belongsTo(TrainerRequest::class);
     // }
     public function Sesions(){
-        $this->hasMany(Sesion::class ,"user_id");
+        return $this->hasMany(Sesion::class ,"user_id");
+    }
+
+    public function Sessions(){
+        return $this->belongsToMany(Sesion::class,"user_sesions","user_id","sesion_id");
     }
 
 }

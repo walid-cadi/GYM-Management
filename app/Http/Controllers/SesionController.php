@@ -16,6 +16,7 @@ class SesionController extends Controller
     {
         //
         $sessions = Sesion::all();
+        //dd($sessions);
         $request_isPay = TrainerRequest::where("user_id",auth()->user()->id)->first();
         return view("session.session",compact("sessions","request_isPay"));
     }
@@ -34,7 +35,7 @@ class SesionController extends Controller
                 "start" => $e->start,
                 "end" => $e->end,
                 "owner"=> $e->user_id,
-                "color" => "#006400",
+                "color" => "#ff6d2f",
                 "passed" => false,
                 "title" => $e->name
             ];

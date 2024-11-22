@@ -50,6 +50,7 @@ class RegisteredUserController extends Controller
         //return redirect(route('info',compact("user"), absolute: false));
     }
     public function info(User $user,Request $request){
+        
         $user->update([
             "width" => $request->width,
             "height" => $request->height,

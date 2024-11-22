@@ -18,7 +18,11 @@ class Sesion extends Model
         "user_id",
     ];
 
-    public function trainers(){
-        $this->belongsTo(User::class,"user_id");
+    public function trainer(){
+        return $this->belongsTo(User::class,"user_id");
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class,"user_sesions");
     }
 }

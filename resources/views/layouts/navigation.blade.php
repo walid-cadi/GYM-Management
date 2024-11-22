@@ -99,14 +99,15 @@
     </div>
 </nav> --}}
 
-<nav class="flex fixed top-0 w-full justify-between bg-[#111317] text-white shadow-md">
+<nav class="flex fixed top-0 w-full justify-between bg-[#1f1f1f] text-white shadow-md">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-2 w-full">
       <div class="relative flex items-center justify-between h-16">
         <!-- Logo and Navigation Links -->
         <div class="flex items-center">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2">
-            <img class="w-40" src="{{ asset('images/FitMaster_Logo.png') }}" alt="Your Company">
+            {{-- <img class="w-40" src="{{ asset('assets/FitMaster_Logo.png') }}" alt="Your Company"> --}}
+            <h1 class="font-bold text-3xl text-white "><span class="text-[#ff6d2f]">F</span>it<span class="text-[#ff6d2f]">M</span>aster</h1>
           </a>
 
           <!-- Navigation Links (Desktop) -->
@@ -135,13 +136,13 @@
             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-black/10 focus:outline-none"
           >
             <!-- Profile Link -->
-            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-[#006400] hover:text-white">
+            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-[#ff6d2f] hover:text-white">
               Your Profile
             </a>
             <!-- Logout -->
             <form method="POST" action="{{ route('logout') }}" class="block">
               @csrf
-              <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#006400] hover:text-white">
+              <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#ff6d2f] hover:text-white">
                 Sign out
               </button>
             </form>

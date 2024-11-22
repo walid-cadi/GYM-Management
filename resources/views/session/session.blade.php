@@ -4,7 +4,7 @@
 @include('layouts.user-nav')
 <style>
         .fc-button {
-            background-color: #006400; /* Dark Green */
+            background-color: #ff6d2f; /* Dark Green */
             color: white;
             border: none;
             border-radius: 5px;
@@ -12,33 +12,33 @@
         }
 
         .fc-button:hover {
-            background-color: #32CD32; /* Lime Green */
+            background-color: #e26d3b; /* Lime Green */
             color: white !important;
         }
 
         .fc-button:active {
-            background-color: #7FFF00; /* Chartreuse */
+            background-color: #fc4c00; /* Chartreuse */
             color: black; /* For better contrast */
         }
 
         .fc-button.fc-button-primary {
-            background-color: #006400; /* Dark Green */
+            background-color: #ff6d2f; /* Dark Green */
             color: white;
         }
 
         .fc-daygrid-day.fc-day-selected,
         .fc-timegrid-day.fc-day-selected {
-            background-color: #32CD32; /* Lime Green */
+            background-color: #e26d3b; /* Lime Green */
             color: white;
         }
 
         .fc-daygrid-day.fc-day-today {
-            background-color: #7FFF00; /* Chartreuse */
+            background-color: #fc4c00; /* Chartreuse */
             color: black; /* For contrast */
         }
 
         .fc-daygrid-day.fc-day-active {
-            background-color: #006400; /* Dark Green */
+            background-color: #ff6d2f; /* Dark Green */
             color: white;
         }
 </style>
@@ -49,7 +49,7 @@
             @if ($request_isPay && $request_isPay->pay == 0)
                 <div class="w-full flex justify-end py-2 px-[2vw]">
                     <div class="text-center w-1/6 py-3">
-                        <a href="trainer/subscrip" type="submit" class="w-full py-3 px-6 bg-[#006400] text-white rounded-md shadow-lg hover:bg-[#006400dd] focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <a href="trainer/subscrip" type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Go To Pay
                         </a>
                     </div>
@@ -57,7 +57,7 @@
             @elseif ($request_isPay && $request_isPay->pay == 1)
                 <div class="w-full flex justify-end py-2 px-[2vw]">
                     <div class="text-center w-1/6 py-3">
-                        <h1 type="submit" class="w-full py-3 px-6 bg-[#006400] text-white rounded-md shadow-lg hover:bg-[#006400dd] focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <h1 type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-2 focus:ring-blue-400">
                            Pending
                         </h1>
                     </div>
@@ -67,7 +67,7 @@
                         <form class="w-1/4" action="{{ route("trainer-requests.store") }}" method="POST">
                             @csrf
                             <div class="text-center">
-                                <button type="submit" class="w-full py-3 px-6 bg-[#006400] text-white rounded-md shadow-lg hover:bg-[#006400dd] focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                <button type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-2 focus:ring-blue-400">
                                     Request To Be Trainer
                                 </button>
                             </div>
@@ -84,46 +84,61 @@
                 </div>
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <button class="hidden bg-[#006400] text-white rounded-md px-4 py-2 hover:bg-[#006400c8] transition" id="session" onclick="openModal('sessionModal')">
+            <button class="hidden bg-[#ff6d2f] text-white rounded-md px-4 py-2 hover:bg-[#ff6d2fc8] transition" id="session" onclick="openModal('sessionModal')">
                 Click to Open modal
             </button>
             <div id="sessionModal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
-                <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
-                    <div class="flex justify-end p-2">
-                        <button onclick="closeModal('sessionModal')" type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <div class="relative top-20 mx-auto shadow-2xl rounded-lg bg-white max-w-lg">
+                    <div class="flex justify-end p-4">
+                        <button onclick="closeModal('sessionModal')"
+                                type="button"
+                                class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-full p-2 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd"></path>
                             </svg>
                         </button>
                     </div>
-                    <div class="pb-6 pt-0 text-center">
-                        <form method="post" action="{{ route("session.store") }}" class=" p-3 flex flex-col gap-y-2">
+
+                    <div class="px-6 pb-8">
+                        <form method="post" action="{{ route('session.store') }}" class="flex flex-col gap-6">
                             @csrf
-                            <h1 class="text-[#111317] font-semibold">Create Session</h1>
-                            <div class="flex flex-col gap-y-1">
-                                <label class="text-[#111317] font-semibold" for="">Name</label>
-                                <input class="rounded-xl focus:ring-0 focus:outline-none focus:border-gray-400 border border-gray-300 p-2" name="name" id="name" type="text">
+                            <h1 class="text-xl font-bold text-gray-800 text-center">Create Session</h1>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700" for="name">Name</label>
+                                <input class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3"
+                                    name="name" id="name" type="text" placeholder="Enter session name" required>
                             </div>
-                            <div class="flex flex-col gap-y-1">
-                                <label class="text-[#111317] font-semibold" for="">description</label>
-                                <input class="rounded-xl focus:ring-0 focus:outline-none focus:border-gray-400 border border-gray-300 p-2" name="description" id="description" type="text">
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
+                                <textarea class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3 resize-none"
+                                        name="description" id="description" rows="3" placeholder="Enter session description" required></textarea>
                             </div>
-                            <div class="flex flex-col gap-y-1">
-                                <label class="text-[#111317] font-semibold" for="">Spots</label>
-                                <input class="rounded-xl focus:ring-0 focus:outline-none focus:border-gray-400 border border-gray-300 p-2" name="spots" id="spots" type="number">
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700" for="spots">Spots</label>
+                                <input class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3"
+                                    name="spots" id="spots" type="number" min="1" placeholder="Enter number of spots" required>
                             </div>
-                            <div class="flex flex-col gap-y-1">
-                                <label class="text-[#111317] font-semibold" for="">Start</label>
-                                <input class="rounded-xl focus:ring-0 focus:outline-none focus:border-gray-400 border border-gray-300 p-2" name="start" id="start" type="datetime-local">
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700" for="start">Start</label>
+                                <input class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3"
+                                    name="start" id="start" type="datetime-local" required>
                             </div>
-                            <div class="flex flex-col gap-y-1">
-                                <label class="text-[#111317] font-semibold" for="">End</label>
-                                <input class="rounded-xl focus:ring-0 focus:outline-none focus:border-gray-400 border border-gray-300 p-2" name="end" id="end" type="datetime-local">
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700" for="end">End</label>
+                                <input class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3"
+                                    name="end" id="end" type="datetime-local" required>
                             </div>
-                            <button class="bg-[#006400] text-white rounded-md px-4 py-2 hover:bg-[#006400c8] transition">Create</button>
+
+                            <button class="w-full py-3 px-6 bg-[#ff6d2f] text-white font-semibold rounded-lg shadow-md hover:bg-[#ff6d2fd8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition">
+                                Create
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -135,7 +150,7 @@
                 </button>
 
                 <div id="sessionInfo{{ $session->id }}" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
-                    <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
+                    <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white min-h-[50vh] w-[45vw]">
                         <div class="flex justify-end p-2">
                             <button onclick="closeModal('sessionInfo{{ $session->id }}')" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
@@ -146,8 +161,30 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="pb-6 pt-0 text-center">
-                            <div>
+                        <div class="pb-6 pt-0 ">
+                            <div class="px-6 pb-6 flex flex-col gap-y-6">
+                                <h1 class="text-2xl text-center font-bold text-gray-800 ">{{ $session->name }}</h1>
+                                <h1 class="text-2xl text-center font-bold text-gray-800 ">Owner: {{ $session->trainer->name }}</h1>
+                                <div class="flex items-center justify-between">
+                                    <p class="text-gray-600 ">
+                                    <span class="font-medium text-gray-700">Start:</span> {{ \Carbon\Carbon::parse($session->start)->format('F j, Y g:i A') }}
+                                </p>
+                                <p class="text-gray-600">
+                                    <span class="font-medium text-gray-700">End:</span> {{ \Carbon\Carbon::parse($session->end)->format('F j, Y g:i A') }}
+                                </p>
+                                </div>
+                                <p class="text-gray-600 ">
+                                    <span class="font-medium text-gray-700">Description:</span> {{ $session->description }}
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <p class="text-gray-600">
+                                        <span class="font-medium text-gray-700">Spots:</span> {{$session->spots}}
+                                    </p>
+                                    <form action="">
+                                        @csrf
+                                        <button>Join Now</button>
+                                    </form>
+                                </div>
 
                             </div>
                         </div>
@@ -177,12 +214,6 @@
                     }
                 };
             </script>
-            {{-- <form class="hidden" method="post" action="{{ route("session.store") }}">
-                @csrf
-                <input name="start" id="start" type="datetime-local">
-                <input name="end" id="end" type="datetime-local">
-                <button id="submitEvent">submit</button>
-            </form> --}}
             {{-- <div class="">
                 <form class="hidden" id="updateForm" method="post" action="">
                     @csrf @method('PUT')

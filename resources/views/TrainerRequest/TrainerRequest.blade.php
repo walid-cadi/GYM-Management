@@ -40,9 +40,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 @if ( $request->pay  == 0)
-                                    <h1 class="bg-red-600 rounded text-white p-1 w-[80px]">not payed</h1>
+                                    <h1 class="bg-[#1f1f1f] rounded text-white p-1 w-[80px]">not payed</h1>
                                 @elseif ($request->pay  == 1)
-                                    <h1 class="bg-green-600 rounded text-white p-1 w-[80px]">payed</h1>
+                                    <h1 class="bg-[#ff6d2f] rounded text-white p-1 w-[80px]">payed</h1>
                                 @endif
 
                             </td>
@@ -52,11 +52,11 @@
                             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
                                 <form action="{{ route('trainer-requests.approve', $request) }}" method="POST" class="inline-block">
                                     @csrf
-                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Approve</button>
+                                    <button type="submit" class="bg-[#ff6d2f] text-white px-4 py-2 rounded">Approve</button>
                                 </form>
                                 <form action="{{ route('trainer-requests.reject', $request) }}" method="POST" class="inline-block">
                                     @csrf
-                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Reject</button>
+                                    <button type="submit" class="bg-[#1f1f1f] text-white px-4 py-2 rounded">Reject</button>
                                 </form>
                             </td>
                         </tr>
