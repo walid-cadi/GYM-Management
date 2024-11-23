@@ -7,6 +7,9 @@ use App\Models\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Stripe\Checkout\Session;
+use Stripe\Price;
+use Stripe\Stripe;
 
 class SesionController extends Controller
 {
@@ -64,40 +67,13 @@ class SesionController extends Controller
             "spots" => $request->spots,
             "start" => $request->start . ":00",
             "end" => $request->end . ":00",
+            "is_premium" => $request->has("is_premium") ? 1 : 0,
             "user_id" => Auth::user()->id
         ]);
 
         return back();
     }
-    //  public function joinSession($sessionId){
-    //         // Check if the user is authenticated
-    //         //dd($sessionId);
-    //         if (!Auth::check()) {
-    //             return redirect()->route('login')->with('error', 'Please log in to join a session.');
-    //         }
 
-    //         $session = Sesion::findOrFail($sessionId);
-
-    //         // Check if spots are available
-    //         if ($session->spots <= 0) {
-    //             return back()->with('error', 'Ce cours est plein.');
-    //         }
-
-    //         // Check if the user is already enrolled in the session
-    //         if (DB::table('user_sesions')->where('sesion_id', $sessionId)->where('user_id', Auth::id())->exists()) {
-    //             return back()->with('error', 'Vous êtes déjà inscrit à ce cours.');
-    //         }
-
-    //         // Attach the user to the session
-    //         if ($session && auth()->user()) {
-    //             $session->users()->attach(auth()->user());
-    //         }
-    //         // Decrement the available spots
-    //         $session->decrement('spots');
-
-    //         // Redirect with success message
-    //         return back()->with('success', 'Vous êtes inscrit avec succès.');
-    //     }
     public function joinSession($sessionId)
 {
     if (!Auth::check()) {
@@ -121,6 +97,44 @@ class SesionController extends Controller
 
     return back()->with('success', 'Vous êtes inscrit avec succès.');
 }
+     public function subscripsession(Request $request, $sessionId)
+    {
+        Stripe::setApiKey(config('stripe.sk'));
+        $prices = Price::all();
+
+        $checkout_session = Session::create([
+            'line_items' => [[
+                'price' => $prices->data[0]->id,
+                'quantity' => 1,
+            ]],
+            'mode' => 'subscription',
+            'success_url' => route('paymentSucces', ['sessionId' => $sessionId]), // Correct way to pass the sessionId
+            'cancel_url' => route('session.index'),
+        ]);
+
+        return redirect()->away($checkout_session->url);
+    }
+      public function paymentSucces($sessionId)
+    {
+        $user = Auth::user();
+        $session = Sesion::findOrFail($sessionId);
+
+        // Debug statements to check values
+        //$paid = $user->sessions()->where('sesion_id', $session->id)->wherePivot('pay', true)->exists();
+        // dd($user, $session, $paid); // This will output the values and stop execution
+
+        if ($user && $session) {
+            // Attach only if the user is not already linked with 'pay' as true
+            if (!$session->users()->where('user_id', $user->id)->wherePivot('is_pay', true)->exists()) {
+                $session->users()->attach($user->id, ['is_pay' => true]);
+                $session->decrement('spots');
+            }
+
+            return redirect()->route('session.index')->with('success', 'Payment successful! You can now join the session.');
+        }
+
+        return redirect()->route('session.index')->with('error', 'Payment failed or invalid session.');
+    }
 
 
     /**

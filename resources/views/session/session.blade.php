@@ -85,7 +85,7 @@
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <button class="hidden bg-[#ff6d2f] text-white rounded-md px-4 py-2 hover:bg-[#ff6d2fc8] transition" id="session" onclick="openModal('sessionModal')">
-                Click to Open modal
+                Create Session
             </button>
             <div id="sessionModal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
                 <div class="relative top-20 mx-auto shadow-2xl rounded-lg bg-white max-w-lg">
@@ -122,6 +122,9 @@
                                 <label class="block text-sm font-medium text-gray-700" for="spots">Spots</label>
                                 <input class="w-full mt-1 rounded-lg border-gray-300 focus:border-[#ff6d2f] focus:ring-[#ff6d2f] p-3"
                                     name="spots" id="spots" type="number" min="1" placeholder="Enter number of spots" required>
+                                    <div class="mt-2">
+                                    <input type="checkbox" class="w-5 h-5 text-[#ff6d2f] bg-gray-100 border-gray-300 rounded focus:ring-0 " id="is_premium" name="is_premium"> <label class=" text-sm font-medium text-gray-700" for="is_premium">Premium</label>
+                                    </div>
                             </div>
 
                             <div>
@@ -180,13 +183,26 @@
                                     <p class="text-gray-600">
                                         <span class="font-medium text-gray-700">Spots:</span> {{$session->spots}}
                                     </p>
-                                    @if(Auth::user()->sessions->contains($session->id))
-                                        <p>Vous êtes déjà inscrit à cette session.</p>
+                                    @if(Auth::user()->sessions->contains($session->id) || Auth::user()->id == $session->user_id)
+                                        <a class="text-[#ff6d2f]" href="">View Session</a>
+                                    @elseif ($session->spots < 1)
+                                        <h1 class="text-gray-500" href="">The Session is Full</h1>
+                                    {{-- @elseif ($session->available == false)
+                                        <h1 class="text-gray-500" href="">The Session is not available</h1> --}}
                                     @else
-                                        <form method="post" action="{{ route('sessions.join', $session->id) }}">
-                                            @csrf
-                                            <button type="submit" class="">Rejoindre cette session</button>
-                                        </form>
+                                        @if (!(Auth::user()->id == $session->user_id) && $session->is_premium )
+                                            <form action="{{ route('session.subscrip', $session->id) }}" method="POST">
+                                                @csrf
+                                                <button class="w-full py-3 bg-[#ff6d2f] text-white rounded-md shadow-md hover:bg-[#ff6d2fd5]">
+                                                    Pay for Premium
+                                                </button>
+                                            </form>
+                                        @else
+                                            <form method="post" action="{{ route('sessions.join', $session->id) }}">
+                                                @csrf
+                                                <button type="submit" class="">Join This Session</button>
+                                            </form>
+                                        @endif
                                     @endif
                                 </div>
                                 <div>
@@ -198,7 +214,6 @@
                                         </form>
                                     @endif
                                 </div>
-
                             </div>
                         </div>
                     </div>

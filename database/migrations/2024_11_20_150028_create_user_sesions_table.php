@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();
             $table->foreignId("sesion_id")->constrained("sesions")->cascadeOnDelete();
+            $table->boolean("is_pay")->default(false);
             $table->timestamps();
         });
     }

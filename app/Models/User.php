@@ -26,6 +26,7 @@ class User extends Authenticatable
         'height',
         'gender',
         'calories',
+        "pay_session"
     ];
 
     /**
