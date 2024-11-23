@@ -120,7 +120,7 @@
         <div class="relative" x-data="{ openProfileMenu: false }">
           <button type="button" class="flex items-center text-sm focus:outline-none focus:ring-0" @click="openProfileMenu = !openProfileMenu">
             <span class="sr-only">Open user menu</span>
-            <img class="h-8 w-8 rounded-full" src="" alt="Profile Picture">
+            <img class="h-8 w-8 rounded-full" src="{{ asset("storage/images/profile/". Auth::user()->image ) }}" alt="Profile Picture">
           </button>
 
           <!-- Dropdown Menu -->

@@ -27,5 +27,8 @@ class Sesion extends Model
     return $this->belongsToMany(User::class, 'user_sesions', 'sesion_id', 'user_id')
                 ->withTimestamps();
 }
+    public function exercises(){
+        return $this->hasMany(Exercise::class);
+    }
 
 }

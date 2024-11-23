@@ -42,7 +42,7 @@
             color: white;
         }
 </style>
-<div class="mt-[7vh] bg-[#111317]">
+<div class="mt-[7vh] bg-[#1f1f1f]">
     <div class="py-12">
         <h1 class="text-center text-white text-4xl font-semibold p-5">Sessions</h1>
         @if (!auth()->user()->hasRole(["trainer","admin"]) )
@@ -139,7 +139,7 @@
                                     name="end" id="end" type="datetime-local" required>
                             </div>
 
-                            <button class="w-full py-3 px-6 bg-[#ff6d2f] text-white font-semibold rounded-lg shadow-md hover:bg-[#ff6d2fd8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition">
+                            <button class="w-full py-3 px-6 bg-[#ff6d2f] text-white font-semibold rounded-lg shadow-md hover:bg-[#ff6d2fd8] focus:outline-none focus:ring-0 transition">
                                 Create
                             </button>
                         </form>
@@ -149,11 +149,11 @@
 
             @foreach ($sessions as $session)
                 <button class="hidden bg-[#ff6d2f] text-white rounded-md px-4 py-2 hover:bg-[#ff6d2fc8] transition" id="session{{ $session->id }}" onclick="openModal('sessionInfo{{ $session->id }}')">
-                    Click to Open modal
+                    session info {{ $session->id }}
                 </button>
 
-                <div id="sessionInfo{{ $session->id }}" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
-                    <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white min-h-[50vh] w-[45vw]">
+                <div id="sessionInfo{{ $session->id }}" class="fixed hidden z-50 inset-0 bg-white bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
+                    <div class="relative top-40 mx-auto shadow-xl rounded-md bg-[#1f1f1f] min-h-[50vh] w-[45vw]">
                         <div class="flex justify-end p-2">
                             <button onclick="closeModal('sessionInfo{{ $session->id }}')" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
@@ -166,41 +166,44 @@
                         </div>
                         <div class="pb-6 pt-0 ">
                             <div class="px-6 pb-6 flex flex-col gap-y-6">
-                                <h1 class="text-2xl text-center font-bold text-gray-800 ">{{ $session->name }}</h1>
-                                <h1 class="text-2xl text-center font-bold text-gray-800 ">Owner: {{ $session->trainer->name }}</h1>
+                                <h1 class="text-2xl text-center font-bold text-[#ff6d2f] ">{{ $session->name }}</h1>
+                                <h1 class="text-2xl text-center font-bold text-white ">Owner: {{ $session->trainer->name }}</h1>
                                 <div class="flex items-center justify-between">
-                                    <p class="text-gray-600 ">
-                                    <span class="font-medium text-gray-700">Start:</span> {{ \Carbon\Carbon::parse($session->start)->format('F j, Y g:i A') }}
-                                </p>
-                                <p class="text-gray-600">
-                                    <span class="font-medium text-gray-700">End:</span> {{ \Carbon\Carbon::parse($session->end)->format('F j, Y g:i A') }}
-                                </p>
+                                    <p class="text-white ">
+                                    <span class="font-medium text-white">Start:</span> {{ \Carbon\Carbon::parse($session->start)->format('F j, Y g:i A') }}
+                                    </p>
+                                    <p class="text-white">
+                                        <span class="font-medium text-white">End:</span> {{ \Carbon\Carbon::parse($session->end)->format('F j, Y g:i A') }}
+                                    </p>
                                 </div>
-                                <p class="text-gray-600 ">
-                                    <span class="font-medium text-gray-700">Description:</span> {{ $session->description }}
+                                <p class="text-white ">
+                                    <span class="font-medium text-white">Description:</span> {{ $session->description }}
                                 </p>
                                 <div class="flex items-center justify-between">
-                                    <p class="text-gray-600">
-                                        <span class="font-medium text-gray-700">Spots:</span> {{$session->spots}}
+                                    <p class="text-white">
+                                        <span class="font-medium text-white">Spots:</span> {{$session->spots}}
                                     </p>
                                     @if(Auth::user()->sessions->contains($session->id) || Auth::user()->id == $session->user_id)
-                                        <a class="text-[#ff6d2f]" href="">View Session</a>
-                                    @elseif ($session->spots < 1)
-                                        <h1 class="text-gray-500" href="">The Session is Full</h1>
-                                    {{-- @elseif ($session->available == false)
-                                        <h1 class="text-gray-500" href="">The Session is not available</h1> --}}
+                                        <form action="{{ route("session.show", $session ) }}" method="get">
+                                            @csrf
+                                            <button class="text-[#ff6d2f] font-semibold text-lg">View Session</button>
+                                        </form>
+                                    @elseif (!(Auth::user()->id == $session->user_id) && $session->spots < 1)
+                                        <h1 class="text-gray-500 text-lg font-semibold" href="">The Session is Full</h1>
+                                    @elseif (!(Auth::user()->id == $session->user_id) && $session->available == false)
+                                        <h1 class="text-gray-500 text-lg font-semibold" href="">The Session is not available</h1>
                                     @else
                                         @if (!(Auth::user()->id == $session->user_id) && $session->is_premium )
                                             <form action="{{ route('session.subscrip', $session->id) }}" method="POST">
                                                 @csrf
-                                                <button class="w-full py-3 bg-[#ff6d2f] text-white rounded-md shadow-md hover:bg-[#ff6d2fd5]">
+                                                <button class=" p-3 bg-[#ff6d2f] text-white rounded-md shadow-md hover:bg-[#ff6d2fd5]">
                                                     Pay for Premium
                                                 </button>
                                             </form>
                                         @else
                                             <form method="post" action="{{ route('sessions.join', $session->id) }}">
                                                 @csrf
-                                                <button type="submit" class="">Join This Session</button>
+                                                <button type="submit" class="p-3 bg-[#ff6d2f] text-white rounded-md shadow-md hover:bg-[#ff6d2fd5]">Join This Session</button>
                                             </form>
                                         @endif
                                     @endif
@@ -210,7 +213,7 @@
                                         <form method="post" action="{{ route("session.delete",$session->id) }}">
                                             @csrf
                                             @method("DELETE")
-                                            <button>Delete This Session</button>
+                                            <button class="text-white bg-[#ff6d2f] p-2 rounded-md">Delete This Session</button>
                                         </form>
                                     @endif
                                 </div>
@@ -254,7 +257,7 @@
             <div class="w-full h-[90vh] bg-white rounded-3xl border-none p-3" id="calendar"></div>
                 <script>
                     document.addEventListener('DOMContentLoaded', async function() {
-                        let response = await axios.get("/sessions/create")
+                        let response = await axios.get("/session/create")
                         let events = response.data.sessions
 
                         let nowDate = new Date()

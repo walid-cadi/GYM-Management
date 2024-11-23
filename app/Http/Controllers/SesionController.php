@@ -108,7 +108,7 @@ class SesionController extends Controller
                 'quantity' => 1,
             ]],
             'mode' => 'subscription',
-            'success_url' => route('paymentSucces', ['sessionId' => $sessionId]), // Correct way to pass the sessionId
+            'success_url' => route('paymentSucces', ['sessionId' => $sessionId]),
             'cancel_url' => route('session.index'),
         ]);
 
@@ -118,10 +118,6 @@ class SesionController extends Controller
     {
         $user = Auth::user();
         $session = Sesion::findOrFail($sessionId);
-
-        // Debug statements to check values
-        //$paid = $user->sessions()->where('sesion_id', $session->id)->wherePivot('pay', true)->exists();
-        // dd($user, $session, $paid); // This will output the values and stop execution
 
         if ($user && $session) {
             // Attach only if the user is not already linked with 'pay' as true
@@ -140,9 +136,23 @@ class SesionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sesion $sesion)
+    public function show(Sesion $session)
     {
         //
+        return view("session.show",compact("session"));
+    }
+
+    public function available(Sesion $session){
+        if ($session->available == false) {
+            $session->update([
+                "available" => true
+            ]);
+        } else {
+            $session->update([
+                "available" => false
+            ]);
+        }
+        return back();
     }
 
     /**
@@ -179,6 +189,6 @@ class SesionController extends Controller
     {
         //
         $sesion->delete();
-        return back();
+        return redirect(route("session.index"));
     }
 }

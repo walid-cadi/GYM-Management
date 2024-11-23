@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TrainerRequestController;
@@ -59,18 +60,23 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get("/sessions",[SesionController::class,"index"])->name("session.index");
-    Route::get("/sessions/create",[SesionController::class,"create"])->name("session.create");
-    Route::post("/sessions/store",[SesionController::class,"store"])->name("session.store");
-    Route::put("/calendar/update/{sesion}" , [SesionController::class , "update"])->name("session.update");
-    Route::delete("/calendar/delete/{sesion}" , [SesionController::class , "destroy"])->name("session.delete");
+    Route::get("/session/create",[SesionController::class,"create"])->name("session.create");
+    Route::get("/session/show/{session}",[SesionController::class,"show"])->name("session.show");
+    Route::put("/session/available/{session}",[SesionController::class,"available"])->name("session.available");
+    Route::post("/session/store",[SesionController::class,"store"])->name("session.store");
+    Route::post('/session/{id}/join', [SesionController::class, 'joinSession'])->name('sessions.join');
+    Route::delete("/session/{sesion}",[SesionController::class,"destroy"])->name("session.delete");
+    Route::post('/session/subscribe/{sessionId}', [SesionController::class, 'subscripsession'])->name('session.subscrip');
+    Route::get('/session/payment-success/{sessionId}', [SesionController::class, 'paymentSucces'])->name('paymentSucces');
+
+    Route::post('/exercise/store',[ExerciseController::class,"store"])->name("exercise.store");
+
+
+    // Route::put("/calendar/update/{sesion}" , [SesionController::class , "update"])->name("session.update");
+    // Route::delete("/calendar/delete/{sesion}" , [SesionController::class , "destroy"])->name("session.delete");
 
     Route::get("trainer/subscrip",[TrainerRequestController::class,"subscrip"])->name("trainer.subscrip");
     Route::get("trainer/seccess",[TrainerRequestController::class,"success"])->name("trainer.seccess");
-    Route::post('/session/{id}/join', [SesionController::class, 'joinSession'])->name('sessions.join');
-    Route::delete("/session/{sesion}",[SesionController::class,"destroy"])->name("session.delete");
-
-    Route::post('/sessions/subscribe/{sessionId}', [SesionController::class, 'subscripsession'])->name('session.subscrip');
-    Route::get('/sessions/payment-success/{sessionId}', [SesionController::class, 'paymentSucces'])->name('paymentSucces');
 });
 
 require __DIR__.'/auth.php';
