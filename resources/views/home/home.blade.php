@@ -78,15 +78,14 @@
     </section>
 
     <!-- Popular Programs Section -->
-<section class=" bg-white py-16">
-    <div class="container mx-auto px-4">
+<section class=" w-full h-[86vh] relative">
+    <div class="w-[100%]  h-[100%] img-programs"></div>
+    <div class="container mx-auto p-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <!-- Section Title -->
-        <h2 class="text-4xl font-bold text-center text-[#ff6d2f] mb-8">Popular Programs</h2>
-
+        <h2 class="text-4xl font-bold text-center z-50 text-[#ff6d2f] mb-8">Popular Programs</h2>
         <!-- Swiper Carousel -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-
                 <div class="swiper-slide">
                     <div class="bg-[#1f1f1f] rounded-lg shadow-lg ">
                         <img
@@ -161,7 +160,7 @@
             clickable: true, // Enable pagination dots to navigate slides
         },
         autoplay: {
-            delay: 4000, // 4 seconds
+            delay: 2000, // 4 seconds
             disableOnInteraction: false, // Continue autoplay even after user interaction
         },
         breakpoints: {

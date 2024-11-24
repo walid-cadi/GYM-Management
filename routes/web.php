@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TrainerRequestController;
+use App\Models\Sesion;
 use App\Models\TrainerRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,8 @@ Route::get('/admin', function () {
 
 
 Route::get('/gym', function () {
-    return view('gym.gym');
+    $sessions = Sesion::all();
+    return view('gym.gym',compact("sessions"));
 })->middleware(['auth', 'verified'])->name('gym');
 
 

@@ -8,37 +8,24 @@
     background-size: cover;
 }
 
-/* Customize colors for specific buttons */
-.fc-listDay-button {
-    background-color: #ff6d2f; /* Dark Green */
-    color: white; /* Text color */
+.img {
+    background-image: url("../../public/assets/samuel-girven-fqMu99l8sqo-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    opacity: 0.2;
 }
-
-.fc-listWeek-button {
-    background-color: #32cd32; /* Lime Green */
-    color: white;
+.img-programs {
+    background-image: url("../../public/assets/danielle-cerullo-CQfNt66ttZM-unsplash (1).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    opacity: 0.4;
 }
-
-.fc-listMonth-button {
-    background-color: #7fff00; /* Chartreuse */
-    color: black; /* Dark text for better contrast */
+.img-sessions {
+    background-image: url("../../public/assets/ambitious-studio-rick-barrett-g_bglWB48JA-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    opacity: 0.4;
 }
-
-.fc-timeGridWeek-button {
-    background-color: #32cd32; /* Lime Green */
-    color: white;
-}
-
-.fc-timeGridDay-button {
-    background-color: #7fff00; /* Chartreuse */
-    color: black; /* Dark text for better contrast */
-}
-.fc-dayGridMonth-button {
-    background-color: #ff6d2f; /* Dark Green */
-    color: white;
-}
-/* Optional: Add hover effects */
-.fc-button:hover {
-    filter: brightness(1.2); /* Slightly brighten on hover */
-}
-

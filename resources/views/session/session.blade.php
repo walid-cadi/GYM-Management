@@ -49,7 +49,7 @@
             @if ($request_isPay && $request_isPay->pay == 0)
                 <div class="w-full flex justify-end py-2 px-[2vw]">
                     <div class="text-center w-1/6 py-3">
-                        <a href="trainer/subscrip" type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <a href="trainer/subscrip" type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-0">
                             Go To Pay
                         </a>
                     </div>
@@ -57,7 +57,7 @@
             @elseif ($request_isPay && $request_isPay->pay == 1)
                 <div class="w-full flex justify-end py-2 px-[2vw]">
                     <div class="text-center w-1/6 py-3">
-                        <h1 type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <h1 type="submit" class="w-full py-3 px-6 bg-[#ff6d2f] text-white rounded-md shadow-lg hover:bg-[#ff6d2fdd] focus:outline-none focus:ring-0">
                            Pending
                         </h1>
                     </div>

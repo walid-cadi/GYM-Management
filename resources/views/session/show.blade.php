@@ -120,14 +120,14 @@
                             <div class="flex items-center gap-x-5">
                                  <form action="{{ route('exercises.updateStatusdone', ['exercise' => $exercise->id]) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd0] transition">
-                                        Mark as Done
+                                    <button type="submit" class="flex items-center gap-x-2 py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd0] transition">
+                                        Mark as Done<i class="bi bi-check2-circle"></i>
                                     </button>
                                 </form>
                                 <form action="{{ route('exercises.updateStatusfavorite', ['exercise' => $exercise->id]) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd4] transition">
-                                        Favorite
+                                    <button type="submit" class="flex items-center gap-x-2 py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd4] transition">
+                                        Favorite<i class="bi bi-heart-fill"></i>
                                     </button>
                                 </form>
                             </div>
