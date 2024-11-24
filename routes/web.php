@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TrainerRequestController;
 use App\Models\TrainerRequest;
@@ -61,15 +62,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/sessions",[SesionController::class,"index"])->name("session.index");
     Route::get("/session/create",[SesionController::class,"create"])->name("session.create");
+    Route::post("/session/store",[SesionController::class,"store"])->name("session.store");
     Route::get("/session/show/{session}",[SesionController::class,"show"])->name("session.show");
     Route::put("/session/available/{session}",[SesionController::class,"available"])->name("session.available");
-    Route::post("/session/store",[SesionController::class,"store"])->name("session.store");
     Route::post('/session/{id}/join', [SesionController::class, 'joinSession'])->name('sessions.join');
     Route::delete("/session/{sesion}",[SesionController::class,"destroy"])->name("session.delete");
     Route::post('/session/subscribe/{sessionId}', [SesionController::class, 'subscripsession'])->name('session.subscrip');
     Route::get('/session/payment-success/{sessionId}', [SesionController::class, 'paymentSucces'])->name('paymentSucces');
 
     Route::post('/exercise/store',[ExerciseController::class,"store"])->name("exercise.store");
+    Route::post('/exercises/{exercise}/status/done', [ExerciseController::class, 'updateExerciseStatusdone'])->name('exercises.updateStatusdone');
+    Route::post('/exercises/{exercise}/status/favorite', [ExerciseController::class, 'updateExerciseStatusfavorite'])->name('exercises.updateStatusfavorite');
 
 
     // Route::put("/calendar/update/{sesion}" , [SesionController::class , "update"])->name("session.update");
@@ -77,6 +80,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get("trainer/subscrip",[TrainerRequestController::class,"subscrip"])->name("trainer.subscrip");
     Route::get("trainer/seccess",[TrainerRequestController::class,"success"])->name("trainer.seccess");
+
+
+    Route::get("/reservation",[ReservationController::class,"index"]);
+    Route::get("/reservation/create",[ReservationController::class,"create"])->name("reservation.create");
+    Route::post("/reservation/store",[ReservationController::class,"store"])->name("reservation.store");
+    Route::put("/reservation/update/{reservation}",[ReservationController::class,"update"])->name("reservation.update");
+    Route::delete("/reservation/delete/{reservation}",[ReservationController::class,"destroy"])->name("reservation.delete");
 });
 
 require __DIR__.'/auth.php';

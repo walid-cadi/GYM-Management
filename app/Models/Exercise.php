@@ -17,4 +17,7 @@ class Exercise extends Model
     public function sesion(){
         return $this->belongsTo(Sesion::class);
     }
+    public function users() {
+        return $this->belongsToMany(User::class, 'exercises_users', 'exercise_id', 'user_id')->withPivot('is_done', 'is_favorite')->withTimestamps();
+    }
 }

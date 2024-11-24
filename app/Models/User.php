@@ -70,6 +70,8 @@ class User extends Authenticatable
     return $this->belongsToMany(Sesion::class, 'user_sesions', 'user_id', 'sesion_id')
                 ->withTimestamps();
 }
-
+public function exercises() {
+        return $this->belongsToMany(Exercise::class, 'exercises_users', 'user_id', 'exercise_id')->withPivot('is_done', 'is_favorite')->withTimestamps();
+    }
 
 }

@@ -18,7 +18,7 @@
         <div class="flex gap-x-8 text-lg">
             <a class="hover:text-[#ff6d2f]" href="/gym">Home</a>
             <a class="hover:text-[#ff6d2f]" href="/sessions">Sessions</a>
-            <a class="hover:text-[#ff6d2f]" href="">Reservation</a>
+            <a class="hover:text-[#ff6d2f]" href="/reservation">Reservation</a>
             @role(["admin"])
             <a class="hover:text-[#ff6d2f]" href="/admin">Admin</a>
             @endRole

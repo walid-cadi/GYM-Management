@@ -305,7 +305,7 @@
 
                             initialView: "timeGridWeek", // initial view  =   l view li kayban  mni kan7ol l  calendar
                             slotMinTime: "09:00:00", // min  time  appear in the calendar
-                            slotMaxTime: "19:00:00", // max  time  appear in the calendar
+                            slotMaxTime: "23:00:00", // max  time  appear in the calendar
                             nowIndicator: true, //  indicator  li kaybyen  l wa9t daba   fin  fl calendar
                             selectable: true, //   kankhali l user  i9ad  i selectioner  wast l calendar
                             selectMirror: true, //  overlay   that show  the selected area  ( details  ... )
@@ -358,7 +358,7 @@
 
                                 if (info.allDay) {
                                     start.value = info.startStr + " 09:00:00"
-                                    end.value = info.startStr + " 19:00:00"
+                                    end.value = info.startStr + " 23:00:00"
 
                                 } else {
                                     start.value = info.startStr.slice(0, info.startStr.length - 6)

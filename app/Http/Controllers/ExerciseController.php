@@ -45,6 +45,59 @@ class ExerciseController extends Controller
 
     }
 
+        public function updateExerciseStatusdone(Request $request, $exerciseId)
+{
+    $user = auth()->user();
+    $exercise = Exercise::findOrFail($exerciseId);
+
+    // Check if the exercise is already attached to the user
+    $exists = $user->exercises()->wherePivot('exercise_id', $exerciseId)->exists();
+
+    if ($exists) {
+        // Update the pivot table if the exercise already exists
+        $user->exercises()->updateExistingPivot($exerciseId, ['is_done' => true]);
+
+        // Subtract the calories burned from the user's goal
+        $caloriesBurned = $exercise->calories_burned;
+        $remainingCalories = max(0, $user->calories - $caloriesBurned); // Ensure remaining calories don't go negative
+        $user->calories = $remainingCalories;
+    } else {
+        // Attach the exercise to the user and mark it as done
+        $user->exercises()->attach($exerciseId, ['is_done' => true]);
+
+        // Update the user's remaining calories after doing the exercise
+        $caloriesBurned = $exercise->calories_burned;
+        $remainingCalories = max(0, $user->calories - $caloriesBurned); // Ensure remaining calories don't go negative
+        $user->calories = $remainingCalories;
+    }
+
+    // Save the updated user
+    $user->save();
+
+    return back();
+}
+ public function updateExerciseStatusfavorite(Request $request, $exerciseId)
+    {
+        $user = auth()->user();
+        $exercise = Exercise::findOrFail($exerciseId);
+
+        $exists = $user->exercises()->wherePivot('exercise_id', $exerciseId)->exists();
+
+        if ($exists) {
+            // Update the pivot table if it exists
+            $user->exercises()->updateExistingPivot($exerciseId, [
+                'is_favorite' => true, // Mark as favorite
+            ]);
+        } else {
+            // Attach the relationship with the correct status
+            $user->exercises()->attach($exerciseId, [
+                'is_favorite' => true, // Set to "favorite" initially
+            ]);
+        }
+
+        return back();
+    }
+
     /**
      * Display the specified resource.
      */

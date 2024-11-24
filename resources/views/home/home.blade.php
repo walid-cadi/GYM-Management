@@ -182,9 +182,9 @@
                 <!-- Testimonial 1 -->
                 <div class="flex flex-col rounded-xl ">
                     <div class="h-[38vh] overflow-hidden w-full">
-                        <img class="w-[100%] h-[100%]  hover:scale-110 duration-300" src="{{ asset("assets/pexels-longkg2000-1693968.jpg") }}" alt="">
+                        <img class="w-[100%] h-[100%] rounded-t-xl hover:scale-110 duration-300" src="{{ asset("assets/pexels-longkg2000-1693968.jpg") }}" alt="">
                     </div>
-                    <div class="bg-white shadow-xl  p-6">
+                    <div class="bg-white shadow-xl rounded-b-xl  p-6">
                         <p class="text-lg italic font-semibold mb-4">
                             "Joining FitMaster was the best decision I ever made. The trainers are amazing!"
                         </p>
@@ -194,9 +194,9 @@
                 <!-- Testimonial 2 -->
                 <div class="flex flex-col">
                     <div class="h-[38vh] overflow-hidden w-full">
-                        <img class="w-[100%] h-[100%] hover:scale-110 duration-300" src="{{ asset("assets/pexels-leonardho-1552103.jpg") }}" alt="">
+                        <img class="w-[100%] h-[100%] rounded-t-xl hover:scale-110 duration-300" src="{{ asset("assets/pexels-leonardho-1552103.jpg") }}" alt="">
                     </div>
-                    <div class="bg-white shadow-xl  p-6">
+                    <div class="bg-white shadow-xl rounded-b-xl  p-6">
                         <p class="text-lg italic font-semibold mb-4">
                             "The equipment is top-notch, and the atmosphere is so motivating!"
                         </p>
@@ -206,9 +206,9 @@
                 <!-- Testimonial 3 -->
                 <div class="flex flex-col">
                     <div class="h-[38vh] overflow-hidden w-full">
-                        <img class="w-[100%] h-[100%] hover:scale-110 duration-300" src="{{ asset("assets/pexels-timothy-220722-700392.jpg") }}" alt="">
+                        <img class="w-[100%] h-[100%] rounded-t-xl hover:scale-110 duration-300" src="{{ asset("assets/pexels-timothy-220722-700392.jpg") }}" alt="">
                     </div>
-                    <div class="bg-white shadow-xl  p-6">
+                    <div class="bg-white shadow-xl rounded-b-xl  p-6">
                         <p class="text-lg italic font-semibold mb-4">
                             "I’ve never felt more energized and fit since joining this gym."
                         </p>

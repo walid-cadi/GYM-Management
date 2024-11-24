@@ -112,10 +112,24 @@
                 @foreach ($session->exercises as $exercise)
                     <div class="bg-white rounded-lg w-[29vw] h-[50vh]">
                         <img class="rounded-lg w-[100%] h-[65%]" src="{{ asset("storage/images/exercise/". $exercise->image) }}" alt="">
-                        <div class="p-4 w-[100%] h-[35%] ">
+                        <div class="flex flex-col gap-y-3 p-4 w-[100%] h-[35%] ">
                             <div class="flex items-center justify-between">
                                 <h1 class="text-lg font-semibold">{{ $exercise->name }}</h1>
                                 <h1 class="text-lg font-semibold">Calories Burned: {{ $exercise->calories_burned }}</h1>
+                            </div>
+                            <div class="flex items-center gap-x-5">
+                                 <form action="{{ route('exercises.updateStatusdone', ['exercise' => $exercise->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd0] transition">
+                                        Mark as Done
+                                    </button>
+                                </form>
+                                <form action="{{ route('exercises.updateStatusfavorite', ['exercise' => $exercise->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="py-2 px-6 bg-[#ff6d2f] text-white rounded-lg hover:bg-[#ff6d2fd4] transition">
+                                        Favorite
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
