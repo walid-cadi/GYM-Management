@@ -2,6 +2,12 @@
       <div class="overflow-auto h-full">
         <ul class="space-y-1">
           <li>
+            <a href="/admin"
+              class="text-white text-xl hover:text-white text-[15px] flex items-center hover:bg-[#ff6d2f] rounded px-4 py-3 transition-all">
+              <span class="font-semibold">Dashboard</span>
+            </a>
+          </li>
+          <li>
             <a href="/users"
               class="text-white text-xl hover:text-white text-[15px] flex items-center hover:bg-[#ff6d2f] rounded px-4 py-3 transition-all">
               <span class="font-semibold">Users</span>

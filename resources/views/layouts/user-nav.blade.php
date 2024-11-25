@@ -46,7 +46,7 @@
             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-black/10 focus:outline-none"
           >
             <!-- Profile Link -->
-            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-[#ff6d2f] hover:text-white">
+            <a href="/user-profile" class="block px-4 py-2 text-sm text-gray-900 hover:bg-[#ff6d2f] hover:text-white">
               Your Profile
             </a>
             <!-- Logout -->

@@ -30,7 +30,7 @@
         </div>
         <div class="flex flex-col">
           <label class="text-[#111317] font-semibold text-lg mb-1" for="weight">
-            Weight:
+            Weight: (kg)
           </label>
           <input
             class="rounded-lg focus:ring-2 focus:ring-[#ff6d2f] focus:outline-none border border-gray-300 p-3 text-gray-700"
@@ -43,7 +43,7 @@
         </div>
         <div class="flex flex-col">
           <label class="text-[#111317] font-semibold text-lg mb-1" for="height">
-            Height:
+            Height: (cm)
           </label>
           <input
             class="rounded-lg focus:ring-2 focus:ring-[#ff6d2f] focus:outline-none border border-gray-300 p-3 text-gray-700"

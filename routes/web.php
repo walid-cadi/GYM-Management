@@ -9,6 +9,7 @@ use App\Http\Controllers\TrainerRequestController;
 use App\Models\Sesion;
 use App\Models\TrainerRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,7 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return view('dashboard');
+    $users = User::wherenot("id",1)->count();
+    $trainers =  User::whereHas('roles', function ($query) {
+            $query->where('name', 'trainer');
+        })->count();
+    $sessions = Sesion::count();
+    $trainers_request = TrainerRequest::count();
+    return view('dashboard',compact("users","trainers","sessions","trainers_request"));
 })->middleware(['auth', 'verified',"role:admin"])->name('dashboard');
 
 
@@ -26,6 +33,13 @@ Route::get('/gym', function () {
     $sessions = Sesion::all();
     return view('gym.gym',compact("sessions"));
 })->middleware(['auth', 'verified'])->name('gym');
+
+Route::get("/user-profile",function(){
+    $user = Auth::user();
+    $dones = $user->exercises()->wherePivot("is_done", true)->get();
+    $favorites = $user->exercises()->wherePivot("is_favorite", true)->get();
+    return view("profile.index",compact("dones","favorites"));
+});
 
 
 
