@@ -67,31 +67,31 @@
                     <label for="activity" class="text-[#FF9D52] font-medium">Activity Level</label>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="activity" value="1.2" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <input type="radio" name="activity" value="1.2" class="focus:ring-0  text-[#ff6d2f]" required>
                             <span class="ml-2">Little or no exercise</span>
                         </label>
                     </div>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="activity" value="1.375" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <input type="radio" name="activity" value="1.375" class="focus:ring-0  text-[#ff6d2f]" required>
                             <span class="ml-2">Sports 1–3 days/week</span>
                         </label>
                     </div>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="activity" value="1.55" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <input type="radio" name="activity" value="1.55" class="focus:ring-0  text-[#ff6d2f]" required>
                             <span class="ml-2">Sports 3–5 days/week</span>
                         </label>
                     </div>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="activity" value="1.725" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <input type="radio" name="activity" value="1.725" class="focus:ring-0  text-[#ff6d2f]" required>
                             <span class="ml-2">Sports 6–7 days/week</span>
                         </label>
                     </div>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" name="activity" value="1.9" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <input type="radio" name="activity" value="1.9" class="focus:ring-0  text-[#ff6d2f]" required>
                             <span class="ml-2">Twice daily</span>
                         </label>
                     </div>

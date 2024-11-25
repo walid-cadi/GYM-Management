@@ -44,7 +44,16 @@
 </style>
 <div class="mt-[7vh] bg-[#1f1f1f]">
     <div class="py-12">
-        <h1 class="text-center text-white text-4xl font-semibold p-5">Reservation</h1>
+        <section class="relative py-16">
+            <div class="absolute top-0 left-0 w-full h-full bg-[#1f1f1f] z-[-1]"></div>
+            <video class="absolute top-0 left-0 w-full h-full object-cover z-[-1]" autoplay loop muted playsinline>
+                <source src="../../../public/assets/videos/3196220-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h1 class="text-5xl font-extrabold text-[#f9ac54] mb-4">Reservation</h1>
+            </div>
+        </section>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <form class="hidden" method="post" class="" action="{{ route('reservation.store') }}">

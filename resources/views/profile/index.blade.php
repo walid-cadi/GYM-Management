@@ -16,11 +16,35 @@
             </div>
         </div>
 
-        <div class="flex-col flex">
-            <h1 class="text-[#ff6d2f] text-2xl font-semibold">Favorite Exercises</h1>
+        <div class="flex-col flex gap-y-5">
+            <h1 class="text-[#ff6d2f] text-2xl font-semibold">Completed Exercises</h1>
             <div class="flex flex-wrap">
                 @foreach ($dones as $done)
-                    <h1>{{ $done->name }}</h1>
+                    <div class="bg-white rounded-lg w-[29vw] h-[50vh]">
+                        <img class="rounded-lg w-[100%] h-[65%]" src="{{ asset("storage/images/exercise/". $done->image) }}" alt="">
+                        <div class="flex flex-col gap-y-3 p-4 w-[100%] h-[35%] ">
+                            <div class="flex flex-col  justify-between">
+                                <h1 class="text-lg font-semibold">{{ $done->name }}</h1>
+                                <h1 class="text-lg font-semibold">Calories Burned: {{ $done->calories_burned }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="flex-col flex gap-y-5">
+            <h1 class="text-[#ff6d2f] text-2xl font-semibold">Favorites Exercises</h1>
+            <div class="flex flex-wrap">
+                @foreach ($favorites as $favorite)
+                    <div class="bg-white rounded-lg w-[29vw] h-[50vh]">
+                        <img class="rounded-lg w-[100%] h-[65%]" src="{{ asset("storage/images/exercise/". $favorite->image) }}" alt="">
+                        <div class="flex flex-col gap-y-3 p-4 w-[100%] h-[35%] ">
+                            <div class="flex flex-col  justify-between">
+                                <h1 class="text-lg font-semibold">{{ $favorite->name }}</h1>
+                                <h1 class="text-lg font-semibold">Calories Burned: {{ $favorite->calories_burned }}</h1>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>

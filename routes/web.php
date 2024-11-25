@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TrainerRequestController;
+use App\Models\Reservation;
 use App\Models\Sesion;
 use App\Models\TrainerRequest;
 use App\Models\User;
@@ -24,6 +25,8 @@ Route::get('/admin', function () {
         })->count();
     $sessions = Sesion::count();
     $trainers_request = TrainerRequest::count();
+    $reservation = Reservation::all();
+    
     return view('dashboard',compact("users","trainers","sessions","trainers_request"));
 })->middleware(['auth', 'verified',"role:admin"])->name('dashboard');
 

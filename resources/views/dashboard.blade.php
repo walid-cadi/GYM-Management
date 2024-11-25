@@ -30,26 +30,26 @@
             </div>
 
         </div>
-        <div class="ms-[250px] w-[50vw] p-2">
+        {{-- <div class="ms-[250px] w-[50vw] p-2">
             <h1></h1>
-            <canvas id="sessionChart" width="" height=""></canvas>
-        </div>
+            <canvas id="reservationChart" width="" height=""></canvas>
+        </div> --}}
     </div>
-    <script>
-    // Get your session data (example dataset)
-    const sessionData = [10, 15, 8, 20, 25, 18, 30]; // Example session counts
-    const sessionLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; // Example days
+{{-- <script>
+    // Get your resrvation data (example dataset)
+    const reservationData = [10, 15, 8, 20, 25, 18, 30]; // Example resrvation counts
+    const reservationLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; // Example days
 
     // Chart configuration
-    const ctx = document.getElementById('sessionChart').getContext('2d');
-    const sessionChart = new Chart(ctx, {
+    const ctx = document.getElementById('reservationChart').getContext('2d');
+    const reservationChart = new Chart(ctx, {
         type: 'line', // Type of chart
         data: {
-            labels: sessionLabels, // X-axis labels
+            labels: reservationLabels, // X-axis labels
             datasets: [{
-                label: 'Sessions', // Legend label
-                data: sessionData, // Y-axis data
-                backgroundColor: "#fff", // Background color of line fill
+                label: 'reservation', // Legend label
+                data: reservationData, // Y-axis data
+                backgroundColor: '', // Background color of line fill
                 borderColor: '#ff6d2f', // Line color
                 borderWidth: 2, // Line thickness
                 pointBackgroundColor: '#1f1f1f', // Point color
@@ -74,6 +74,7 @@
             }
         }
     });
-</script>
+</script> --}}
+
 
 </x-app-layout>

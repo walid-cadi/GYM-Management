@@ -4,18 +4,18 @@
 @include('layouts.user-nav')
 <div class="min-h-screen bg-[#1f1f1f]">
     <div class="pt-[10vh] ">
-        <div class="p-12 flex flex-col items-center gap-y-2">
+        <div class="p-12 flex flex-col m-auto mt-2 rounded-lg w-[45vw] bg-white  items-center gap-y-2">
             <h1 class="text-[#ff6d2f] text-4xl font-semibold">{{ $session->name }}</h1>
-            <h1 class="text-white text-3xl font-semibold">owner: {{ $session->trainer->name }}</h1>
+            <h1 class="text-[#1f1f1f] text-3xl font-semibold">owner: {{ $session->trainer->name }}</h1>
             <div class="flex items-center gap-x-11">
-                <p class="text-white ">
-                    <span class="font-medium text-white">Start:</span> {{ \Carbon\Carbon::parse($session->start)->format('F j, Y g:i A') }}
+                <p class="text-[#1f1f1f] ">
+                    <span class="font-medium text-[#1f1f1f]">Start:</span> {{ \Carbon\Carbon::parse($session->start)->format(' j, Y g:i A') }}
                 </p>
-                <p class="text-white">
-                    <span class="font-medium text-white">End:</span> {{ \Carbon\Carbon::parse($session->end)->format('F j, Y g:i A') }}
+                <p class="text-[#1f1f1f]">
+                    <span class="font-medium text-[#1f1f1f]">End:</span> {{ \Carbon\Carbon::parse($session->end)->format(' j, Y g:i A') }}
                 </p>
             </div>
-            <h1 class="font-medium text-white">Description: {{ $session->description }}</h1>
+            <h1 class="font-medium text-[#1f1f1f]">Description: {{ $session->description }}</h1>
             @if (Auth::user()->id == $session->user_id)
                 <div class="flex items-center gap-x-3 mt-2 ">
                     <form method="post" action="{{ route("session.delete",$session->id) }}">
@@ -106,6 +106,7 @@
                 </div>
             @endif
         </div>
+
         <div class="p-12 flex flex-col items-center gap-y-4">
             <h1 class="text-[#ff6d2f] text-3xl font-semibold">Exercises</h1>
             <div class="flex-wrap flex gap-8">
