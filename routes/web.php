@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
@@ -26,7 +27,7 @@ Route::get('/admin', function () {
     $sessions = Sesion::count();
     $trainers_request = TrainerRequest::count();
     $reservation = Reservation::all();
-    
+
     return view('dashboard',compact("users","trainers","sessions","trainers_request"));
 })->middleware(['auth', 'verified',"role:admin"])->name('dashboard');
 
@@ -69,6 +70,9 @@ Route::put("/info/update/{user}",[RegisteredUserController::class,"info"])->name
 
 
 Route::middleware('auth')->group(function () {
+    
+    Route::delete("/user/delete/{admin}",[AdminController::class,"destroy"])->name("admin.delete");
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
